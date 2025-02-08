@@ -15,9 +15,9 @@ svg {
 }
 
 .clock-face {
-    fill: var(--bs-body-bg);
-    stroke: var(--bs-border-color);
-    stroke-width: 4;
+    fill: var(--bs-content-bg);
+    stroke: var(--bs-content-color);
+    stroke-width: 4.5;
 }
 
 .clock-hand {
@@ -27,31 +27,54 @@ svg {
 }
 
 #hour-hand {
-    stroke: var(--bs-secondary-color);
-    stroke-width: calc(7 * .999999);
+    stroke: var(--bs-info);
+    stroke-width: 7.5;
+    outline: 0.4px outset var(--bs-info);
+    border-radius: 7.5px;
 }
 
 #minute-hand {
-    stroke: var(--bs-body-color);
-    stroke-width: calc(5 * .999999);
+    stroke: var(--bs-warning);
+    stroke-width: 4.5;
+    outline: 0.2px outset var(--bs-warning);
+    border-radius: 4.5px;
 }
 
 #second-hand {
-    stroke: red;
-    stroke-width: calc(3 * .999999);
+    stroke: var(--bs-danger);
+    stroke-width: 1.5;
+    outline: 0.1px outset var(--bs-danger);
+    border-radius: 1.5px;
 }
+
 #center-pin {
     fill: var(--bs-body-bg);
     stroke: var(--bs-body-color);
     stroke-width: 0.5;
+    outline: 0.5px outset var(--bs-body-color);
+    border-radius: 50%;
 }
+
 .hour-marker {
-    stroke: var(--bs-border-color);
-    stroke-width: 3;
+    stroke-linecap: round;
+    stroke: var(--bs-body-color);
+    stroke-width: 4;
+    outline: 39px dashed var(--bs-body-bg);
+    outline-offset: -4.5px;
+    border-radius: 50%;
+}
+
+.minute-marker {
+    stroke-linecap: round;
+    stroke: var(--bs-primary);
+    stroke-width: 2;
+    outline: 7px double var(--bs-primary);
+    outline-offset: 241px;
+    border-radius: 50%;
 }
 
 .clock-text {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     text-anchor: middle;
     fill: var(--bs-body-color);

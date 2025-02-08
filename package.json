@@ -14,5 +14,13 @@
     "\"UI\"]"
   ],
   "author": "PhobiaCide",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhobiaCide/ultimate-analog-clock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PhobiaCide/ultimate-analog-clock/issues"
+  },
+  "homepage": "https://github.com/PhobiaCide/ultimate-analog-clock#readme"
 }

@@ -26,22 +26,25 @@
             <input type="button" id="dark-light-toggle" value="" class="btn topcoat-button">
         </span>
     </header>
-    <main class="container-fluid">
-        <section class="row">
-            <figure class="figure card col-12 mx-auto subpixel-antialiased">
-                <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet"
-                    class="bg-gradient rounded-circle bg-secondary border border-primary">
-                    <circle cx="150" cy="150" r="140" class="clock-face"></circle>
-                    <g id="hour-markers"></g>
-                    <g id="clock-numerals"></g>
-                    <line id="hour-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="100"></line>
-                    <line id="minute-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="80"></line>
-                    <line id="second-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="60"></line>
-                    <circle id="center-pin" cx="150" cy="150" r="4"></circle>
-                </svg>
-                <figcaption class="figure-caption card-footer"></figcaption>
-            </figure>
-        </section>
+    <main class="container">
+        <article class="container-fluid">
+            <section class="row">
+                <figure class="figure card col-6 mx-auto subpixel-antialiased">
+                    <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet"
+                        class="bg-gradient rounded-circle bg-secondary border border-primary">
+                        <circle cx="150" cy="150" r="140" class="clock-face"></circle>
+                        <g id="hour-markers"></g>
+                        <g id="minute-markers"></g>
+                        <g id="clock-numerals"></g>
+                        <line id="hour-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="100"></line>
+                        <line id="minute-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="80"></line>
+                        <line id="second-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="60"></line>
+                        <circle id="center-pin" cx="150" cy="150" r="4"></circle>
+                    </svg>
+                    <figcaption class="figure-caption card-footer"></figcaption>
+                </figure>
+            </section>
+        </article>
     </main>
 
     <script src="script.js"></script>
