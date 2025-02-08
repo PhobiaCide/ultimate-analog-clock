@@ -1,0 +1,58 @@
+html {
+    width: 100vw;
+}
+body {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-height: 100%;
+}
+svg {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.clock-face {
+    fill: var(--bs-body-bg);
+    stroke: var(--bs-border-color);
+    stroke-width: 4;
+}
+
+.clock-hand {
+    stroke-linecap: round;
+    transform-origin: 150px 150px;
+    transition: transform 0.1s linear;
+}
+
+#hour-hand {
+    stroke: var(--bs-secondary-color);
+    stroke-width: calc(7 * .999999);
+}
+
+#minute-hand {
+    stroke: var(--bs-body-color);
+    stroke-width: calc(5 * .999999);
+}
+
+#second-hand {
+    stroke: red;
+    stroke-width: calc(3 * .999999);
+}
+#center-pin {
+    fill: var(--bs-body-bg);
+    stroke: var(--bs-body-color);
+    stroke-width: 0.5;
+}
+.hour-marker {
+    stroke: var(--bs-border-color);
+    stroke-width: 3;
+}
+
+.clock-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-anchor: middle;
+    fill: var(--bs-body-color);
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SVG Clock</title>
+    <!-- Halfmoon.css -->
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.1/css/halfmoon.min.css" rel="stylesheet"
+        integrity="sha256-SsJizWSIG9JT9Qxbiy8xnYJfjCAkhEQ0hihxRn7jt2M=" crossorigin="anonymous" />
+    <!-- Halfmoon modern core theme -->
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.1/css/cores/halfmoon.modern.css" rel="stylesheet"
+        integrity="sha256-DD6elX+jPmbFYPsGvzodUv2+9FHkxHlVtQi0/RJVULs=" crossorigin="anonymous" />
+    <!-- Mobile Dark -->
+    <link id="topcoat" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-mobile-light.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-bs-theme="light" data-bs-core="modern">
+    <header class="row sticky-top p-1 px-2">
+        <h1 class="col-8">Ultimate Analog Clock Simulation</h1>
+        <span class="col-4 text-end">
+            <input type="button" id="dark-light-toggle" value="" class="btn topcoat-button">
+        </span>
+    </header>
+    <main class="container-fluid">
+        <section class="row">
+            <figure class="figure card col-12 mx-auto subpixel-antialiased">
+                <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet"
+                    class="bg-gradient rounded-circle bg-secondary border border-primary">
+                    <circle cx="150" cy="150" r="140" class="clock-face"></circle>
+                    <g id="hour-markers"></g>
+                    <g id="clock-numerals"></g>
+                    <line id="hour-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="100"></line>
+                    <line id="minute-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="80"></line>
+                    <line id="second-hand" class="clock-hand" x1="150" y1="150" x2="150" y2="60"></line>
+                    <circle id="center-pin" cx="150" cy="150" r="4"></circle>
+                </svg>
+                <figcaption class="figure-caption card-footer"></figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
