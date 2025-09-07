@@ -124,24 +124,46 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
     updateClock() {
-      const now = new Date();
-      let [targetHourRotation, targetMinuteRotation, targetSecondRotation] = this.calculateHandPositions(now);
+  const now = new Date();
+  const seconds = now.getSeconds();
+  const minutes = now.getMinutes();
+  const hours = now.getHours() % 12;
 
-      this.lastHourRotation = this.enforceStrictForwardRotation(this.lastHourRotation, targetHourRotation);
-      this.lastMinuteRotation = this.enforceStrictForwardRotation(this.lastMinuteRotation, targetMinuteRotation);
-      this.lastSecondRotation = this.enforceBoundedCorrection(this.lastSecondRotation, targetSecondRotation);
+  // === Second hand ===
+  let targetSecondRotation = seconds * 6;
+  this.lastSecondRotation = this.enforceBoundedCorrection(
+    this.lastSecondRotation,
+    targetSecondRotation
+  );
+  this.applyRotation("second-hand", this.lastSecondRotation);
 
-      this.applyRotation("hour-hand", this.lastHourRotation);
-      this.applyRotation("minute-hand", this.lastMinuteRotation);
-      this.applyRotation("second-hand", this.lastSecondRotation);
+  // === Minute hand (incremental, tied to seconds) ===
+  // Every 60s, minute hand moves 6°. => 0.1° per second.
+  let targetMinuteRotation = minutes * 6 + (this.lastSecondRotation / 60);
+  this.lastMinuteRotation = this.enforceStrictForwardRotation(
+    this.lastMinuteRotation,
+    targetMinuteRotation
+  );
+  this.applyRotation("minute-hand", this.lastMinuteRotation);
 
-      if (Date.now() - this.lastSyncTime > this.syncInterval) {
-        this.setInitialClockPosition();
-        this.lastSyncTime = Date.now();
-      }
+  // === Hour hand (incremental, tied to minutes) ===
+  // Every 60m, hour hand moves 30°. => 0.5° per minute => 1/120° per second.
+  let targetHourRotation = (hours * 30) + (this.lastMinuteRotation / 12);
+  this.lastHourRotation = this.enforceStrictForwardRotation(
+    this.lastHourRotation,
+    targetHourRotation
+  );
+  this.applyRotation("hour-hand", this.lastHourRotation);
 
-      setTimeout(() => this.updateClock(), 1000);
-    }
+  // === Resync occasionally ===
+  if (Date.now() - this.lastSyncTime > this.syncInterval) {
+    this.setInitialClockPosition();
+    this.lastSyncTime = Date.now();
+  }
+
+  setTimeout(() => this.updateClock(), 1000);
+}
+
 
     startClock() {
       this.drawHourMarkers();
