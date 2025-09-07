@@ -97,29 +97,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     enforceBoundedCorrection(lastRotation, targetRotation) {
-      let delta = (targetRotation - lastRotation + 360) % 360;
-      if (delta > 180) delta -= 360;
+  let delta = (targetRotation - lastRotation + 360) % 360;
 
-      // Ensure only one movement per tick
-      let now = Date.now();
-      if (now - this.lastTickTime < 1000) return lastRotation; // Prevent movement before a full second has passed
+  // Prevent reverse sweep: always move forward
+  if (delta === 0) return lastRotation;
 
-      // Standard movement is 6° per second
-      let normalStep = 6;
+  // Ensure only one movement per tick
+  let now = Date.now();
+  if (now - this.lastTickTime < 1000) return lastRotation;
 
-      // Correction limit: second hand can move between 5.5° and 6.5° per second
-      let minStep = 5.5;
-      let maxStep = 6.5;
+  // Standard second-hand step
+  let normalStep = 6;
 
-      // Compute correction step
-      let correctionStep = normalStep + (delta / (this.syncInterval / 1000));
+  // Correction limit: allow slight variation around 6° per second
+  let minStep = 5.5;
+  let maxStep = 6.5;
 
-      // Ensure correction stays within bounds
-      correctionStep = Math.min(Math.max(correctionStep, minStep), maxStep);
+  // Correction step (spread correction gradually)
+  let correctionStep = normalStep + (delta / (this.syncInterval / 1000));
 
-      this.lastTickTime = now; // Update tick timestamp
-      return lastRotation + correctionStep;
-    }
+  // Clamp within bounds
+  correctionStep = Math.min(Math.max(correctionStep, minStep), maxStep);
+
+  this.lastTickTime = now;
+  return lastRotation + correctionStep;
+}
 
     updateClock() {
       const now = new Date();
