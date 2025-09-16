@@ -1,81 +1,28 @@
-html {
-    width: 100vw;
-}
-body {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    min-height: 100%;
-}
-svg {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.clock-face {
-    fill: var(--bs-content-bg);
-    stroke: var(--bs-content-color);
-    stroke-width: 4.5;
-}
-
-.clock-hand {
-    stroke-linecap: round;
-    transform-origin: 150px 150px;
-    transition: transform 0.1s linear;
-}
-
-#hour-hand {
-    stroke: var(--bs-info);
-    stroke-width: 7.5;
-    outline: 0.4px outset var(--bs-info);
-    border-radius: 7.5px;
-}
-
-#minute-hand {
-    stroke: var(--bs-warning);
-    stroke-width: 4.5;
-    outline: 0.2px outset var(--bs-warning);
-    border-radius: 4.5px;
-}
-
-#second-hand {
-    stroke: var(--bs-danger);
-    stroke-width: 1.5;
-    outline: 0.1px outset var(--bs-danger);
-    border-radius: 1.5px;
-}
-
-#center-pin {
-    fill: var(--bs-body-bg);
-    stroke: var(--bs-body-color);
-    stroke-width: 0.5;
-    outline: 0.5px outset var(--bs-body-color);
-    border-radius: 50%;
-}
-
-.hour-marker {
-    stroke-linecap: round;
-    stroke: var(--bs-body-color);
-    stroke-width: 4;
-    outline: 39px dashed var(--bs-body-bg);
-    outline-offset: -4.5px;
-    border-radius: 50%;
-}
-
-.minute-marker {
-    stroke-linecap: round;
-    stroke: var(--bs-primary);
-    stroke-width: 2;
-    outline: 7px double var(--bs-primary);
-    outline-offset: 241px;
-    border-radius: 50%;
-}
-
-.clock-text {
-    font-size: 22px;
-    font-weight: bold;
-    text-anchor: middle;
-    fill: var(--bs-body-color);
-}
+  body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: var(--bg, #ccc);
+    }
+    svg {
+      width: 300px;
+      height: 300px;
+    }
+    .hand {
+      stroke: #fff;
+      stroke-linecap: round;
+      transform-origin: 150px 150px;
+    }
+    #second-hand { stroke: red; stroke-width: 2; }
+    #minute-hand { stroke: white; stroke-width: 4; }
+    #hour-hand   { stroke: black; stroke-width: 6; }
+    .hour-marker, .minute-marker {
+      stroke: #888;
+      stroke-width: 2;
+    }
+    .clock-text {
+      fill: white;
+      font: bold 16px sans-serif;
+      text-anchor: middle;
+    }
